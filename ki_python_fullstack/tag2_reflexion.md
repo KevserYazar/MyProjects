@@ -2,33 +2,6 @@
 
 Datum: 2025-12-16
 
-## Was lief gut?
-- 
-
-## Herausforderungen
-- 
-
-## Was habe ich gelernt?
-- 
-
-## Nächste Schritte
-- 
-
-## Ressourcen / Links
-- 
-
-## Stimmung
-- 
-
----
-
-Notizen:
-- Nutze diese Vorlage, um täglich kurz zu reflektieren.
-
-# Tag 2 — Reflexion
-
-Datum: 2025-12-16
-
 ## Warum sind virtuelle Umgebungen wichtig?
 
 - Isolieren Abhängigkeiten pro Projekt, verhindern Versionskonflikte.
