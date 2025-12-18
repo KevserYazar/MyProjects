@@ -2,98 +2,42 @@
 
 # Firmen nutzen Docstrings oft zur automatischen Generierung von API-Dokumentationen
 
+
 def evaluate_mood(mood: str) -> str:
-    
     """
-    Docstring für evaluate_mood
-    
-    :param mood: Beschreibung
-    :type mood: str
-    :return: Beschreibung
-    :rtype: str
-    """
+    Bewertet die Stimmung basierend auf dem eingegebenen Text.
 
-""" Bewertet die eingegebene Stimmung und gibt eine entsprechende Nachricht zurück.  
- Args: 
-            mood (str): Die Stimmung als String (z.B. 'gut', 'schlecht', 'traurig', 'glücklich')
-        
-        Returns:
-            str:  Eine aufmunternde Nachricht bei negativer Stimmung oder 
-                 eine bestätigende Nachricht bei positiver Stimmung
-        
-        Raises:
-            ValueError:  Wenn mood leer oder nur Leerzeichen enthält
-        
-        Examples:
-            >>> evaluate_mood("traurig")
-            'Kopf hoch! 😊 Schlechte Zeiten gehen vorbei.  Du schaffst das!'
-            
-            >>> evaluate_mood("glücklich")
-            'Das freut mich! 🎉 Behalte diese positive Energie!'
-    """
-    # Fehler werfen, wenn mood leer ist
-    if not mood or mood.strip() == "":
-        raise ValueError("Die Stimmung darf nicht leer sein!")
-    
-    # Normalisiere die Eingabe für Vergleich
-    mood_lower = mood. lower().strip()
-    
-    # Definiere negative und positive Stimmungen
-    negative_moods = ['schlecht', 'traurig', 'deprimiert', 'niedergeschlagen', 
-                      'müde', 'gestresst', 'ängstlich', 'wütend', 'frustriert']
-    
-    positive_moods = ['gut', 'glücklich', 'fröhlich', 'begeistert', 'motiviert',
-                      'zufrieden', 'entspannt', 'euphorisch', 'optimistisch']
-    
-    # Prüfe auf negative Stimmung
-    if any(neg_mood in mood_lower for neg_mood in negative_moods):
-        return ("Kopf hoch! 😊 Schlechte Zeiten gehen vorbei. "
-                "Du schaffst das!  Denk daran:  Nach Regen kommt Sonnenschein!  🌈")
-    
-    # Prüfe auf positive Stimmung
-    elif any(pos_mood in mood_lower for pos_mood in positive_moods):
-        return ("Das freut mich! 🎉 Behalte diese positive Energie! "
-                "Du bist auf dem richtigen Weg! ✨")
-    
-    # Neutrale oder unbekannte Stimmung
-    else:
-        return ("Danke, dass du deine Stimmung geteilt hast.  "
-                "Ich hoffe, es geht dir gut! 💙")
+    Args:
+        mood (str): Die Stimmung als Text (z.B. "glücklich", "traurig").
 
+    Returns:
+        str: Eine Bewertung der Stimmung ("positiv", "negativ", "neutral").
+    """
+    positive_moods = ["glücklich", "zufrieden", "aufgeregt","fröhlich","gut"]
+    negative_moods = ["traurig", "wütend", "frustriert","deprimiert","schlecht"]
+
+    mood = mood.lower().strip()
+
+    if not mood:
+        raise ValueError("Stimmung darf nicht leer sein")
+
+    if mood in negative_moods:
+        return "Das ist vollkommen okay. Sei sanft zu dir – Schritt für Schritt wird es besser 💙"
+
+    if mood in positive_moods:
+        return "Das ist großartig! Behalte dieses Gefühl bei 💪✨"
+
+    return "Danke, dass du deine Stimmung geteilt hast."
 
 def main():
-    """
-    Hauptfunktion zum Ausführen des Mood Evaluators. 
-    Fordert den Benutzer zur Eingabe auf und zeigt die Bewertung an.
-    """
-    print("=" * 50)
-    print("   Willkommen beim Mood Evaluator!  🌟")
-    print("=" * 50)
-    print()
-    
     try:
-        # Benutzereingabe
-        user_mood = input("Wie ist deine Stimmung heute? ")
-        
-        # Stimmung bewerten
-        result = evaluate_mood(user_mood)
-        
-        # Ergebnis anzeigen
-        print()
-        print("-" * 50)
-        print(result)
-        print("-" * 50)
-        
-    except ValueError as e:
-        print(f"\n❌ Fehler: {e}")
-        print("Bitte gib eine gültige Stimmung ein.")
-    
-    except KeyboardInterrupt:
-        print("\n\nProgramm wurde beendet.  Bis bald! 👋")
-    
-    except Exception as e: 
-        print(f"\n❌ Ein unerwarteter Fehler ist aufgetreten: {e}")
+        mood = input("Wie fühlst du dich gerade? ")
+        message = evaluate_mood(mood)
+        print(message)
+    except ValueError as error:
+        print("Fehler:", error)
 
 
 if __name__ == "__main__":
-    main()  
+    main()
+# ========================================================================
